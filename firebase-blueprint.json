@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "PatientProfile": {
+      "title": "PatientProfile",
+      "description": "Patient user profile and preferences",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["patient", "caregiver"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "preferredLanguage": { "type": "string" },
+        "textSize": { "type": "string" },
+        "contrastTheme": { "type": "string" }
+      },
+      "required": ["id", "displayName", "email", "role"]
+    },
+    "Routine": {
+      "title": "Routine",
+      "description": "Patient daily routine reminder items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "time": { "type": "string" },
+        "period": { "type": "string", "enum": ["Morning", "Afternoon", "Evening", "Night"] },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "pillColor": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "time", "period", "title", "completed"]
+    },
+    "MemoryPerson": {
+      "title": "MemoryPerson",
+      "description": "Patient memory book familiar face/memory entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "relation": { "type": "string" },
+        "location": { "type": "string" },
+        "story": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "phone": { "type": "string" },
+        "keyMemory": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "relation", "story", "keyMemory"]
+    },
+    "CognitiveProgress": {
+      "title": "CognitiveProgress",
+      "description": "Daily or session cognitive wellness and engagement log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "date": { "type": "string" },
+        "gameId": { "type": "string" },
+        "score": { "type": "number" },
+        "latencyMs": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "date", "timestamp"]
+    }
+  }
+}

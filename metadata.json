@@ -1,0 +1,7 @@
+{
+  "name": "Memoryom - Memory Companion",
+  "description": "Accessible eldercare and dementia memory companion with gentle cognitive brain exercises, daily routines, family memory book, hands-free voice assistance, and instant emergency reassurance.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

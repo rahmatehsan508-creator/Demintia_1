@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check authentication
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Check if the user is the owner of the document or creating their own document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Patient Profiles
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Patient Routines
+    match /users/{userId}/routines/{routineId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Patient Memory Book Entries
+    match /users/{userId}/memories/{memoryId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Patient Cognitive & Engagement Logs
+    match /users/{userId}/progress/{progressId} {
+      allow read, write: if isOwner(userId);
+    }
+  }
+}
